@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,12 @@ Route::get('/', function() {
     });
 */
 Route::resource('/visitors', VisitorController::class);
+
+// Route::resource('/auth',  LoginController::class);
+
 Route::get('/', [WelcomeController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 ?>
